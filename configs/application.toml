@@ -1,0 +1,6 @@
+[Server]
+    NAME = "go-unit-test-example-api"
+    PORT = "8080"
+    TRACING = "true"
+    VERSION = "1.0.0"
+    LOGLEVEL = "debug" #Available loglevel is "debug", "info", "warn", "error", "fatal", "panic", and ""

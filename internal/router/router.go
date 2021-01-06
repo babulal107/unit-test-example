@@ -3,15 +3,14 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/martian/log"
+	appConfig "github.com/unit-test-example/internal/config"
 	"github.com/unit-test-example/pkg/api/model"
-	"github.com/unit-test-example/pkg/config"
 	"github.com/unit-test-example/pkg/middleware"
 	"github.com/unit-test-example/pkg/utils"
 	"net/http"
 )
-
 // Init services, repositories, gin middleware and router
-func Init(configs config.APP) *gin.Engine {
+func Init(configs *appConfig.Application) *gin.Engine {
 
 	r := gin.New()
 	r.HandleMethodNotAllowed = utils.HandleMethodNotAllowed
