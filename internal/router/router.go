@@ -9,18 +9,19 @@ import (
 	"github.com/unit-test-example/pkg/utils"
 	"net/http"
 )
+
 // Init services, repositories, gin middleware and router
 func Init(configs *appConfig.Application) *gin.Engine {
 
 	r := gin.New()
 	r.HandleMethodNotAllowed = utils.HandleMethodNotAllowed
 	r.UseRawPath = utils.UseRawPath
+	r.Use(gin.Recovery(), gin.Logger()) // default gin recovery and logger middleware used
 	r.Use(func(context *gin.Context) {
 		log.Debugf("%v", context.Request.Header)
 		log.Debugf("Service Name %s", context.GetHeader(utils.HttpHeaderServiceName))
 		context.Next()
 	})
-	r.Use(gin.Recovery())
 	r.Use(middleware.WithCacheHeaderControl("300")) // 5 mines
 
 	// server status check route
