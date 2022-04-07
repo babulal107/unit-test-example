@@ -1,0 +1,14 @@
+@startuml
+
+actor       actor       as actor
+actor -> Controller : user request
+Controller -> RedisStoreCache : get response from cache
+RedisStoreCache -> controller : user data form cache
+
+Controller -> service : get user request
+
+database    database    as database
+
+service -> database : get user data
+
+@enduml
