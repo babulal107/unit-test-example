@@ -12,7 +12,7 @@ func main() {
 
 	for n := range generateNumber(ctx) {
 		fmt.Println(n)
-		if n == 10 {
+		if n == 1000 {
 			break
 		}
 	}
